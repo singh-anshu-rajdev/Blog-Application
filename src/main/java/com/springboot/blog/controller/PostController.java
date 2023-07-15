@@ -1,7 +1,9 @@
 package com.springboot.blog.controller;
 
 import com.springboot.blog.payload.PostDto;
+import com.springboot.blog.payload.PostResponse;
 import com.springboot.blog.service.PostService;
+import com.springboot.blog.utils.AppConstraints;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +25,12 @@ public class PostController {
     }
 
     @GetMapping("/getposts")
-    public List<PostDto> getAllPost(){
-        return postservice.getAllPosts();
+    public PostResponse getAllPost(
+            @RequestParam(value = "pageNo", defaultValue = AppConstraints.DEFAULT_PAGE_NUMBER, required = false)int pageNo,
+            @RequestParam(value = "pageSize",defaultValue = AppConstraints.DEFAULT_PAGE_SIZE,required = false) int pageSize,
+            @RequestParam(value = "sortBy",defaultValue = AppConstraints.DEFAULT_SORT_BY,required = false) String sortBy,
+            @RequestParam(value = "sortDir", defaultValue = AppConstraints.DEFAULT_SORT_DIRECTION,required = false) String sortDir){
+        return postservice.getAllPosts(pageNo, pageSize, sortBy, sortDir);
     }
 
     @GetMapping("/getById/{id}")
