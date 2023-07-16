@@ -1,11 +1,15 @@
 package com.springboot.blog.service.impl;
 
+import com.springboot.blog.entity.Comment;
 import com.springboot.blog.entity.Post;
 import com.springboot.blog.exception.ResourceNotFoundException;
+import com.springboot.blog.payload.CommentDto;
 import com.springboot.blog.payload.PostDto;
 import com.springboot.blog.payload.PostResponse;
+import com.springboot.blog.repository.CommentRepository;
 import com.springboot.blog.repository.PostRepository;
 import com.springboot.blog.service.PostService;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -14,20 +18,23 @@ import org.springframework.stereotype.Service;
 import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
 public class PostServiceImpl implements PostService {
 
     private PostRepository postRepository;
+    private ModelMapper mapper;
 
-    public PostServiceImpl(PostRepository postRepository) {
+    public PostServiceImpl(PostRepository postRepository, ModelMapper mapper) {
         this.postRepository = postRepository;
+        this.mapper = mapper;
     }
 
     @Override
     public PostDto createPost(PostDto postdto) {
-        Post post = mapToPost(postdto);
+        Post post = mapToEntity(postdto);
         Post newpost = postRepository.save(post);
         PostDto responsepost = mapToDTO(newpost);
         return responsepost;
@@ -37,7 +44,6 @@ public class PostServiceImpl implements PostService {
     public PostResponse getAllPosts(int pageno, int pageSize, String sortBy, String sortDir) {
 
         Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
-
         //create pageable instance
         PageRequest pageable = PageRequest.of(pageno,pageSize,sort);
         Page<Post> posts =  postRepository.findAll(pageable);
@@ -82,21 +88,14 @@ public class PostServiceImpl implements PostService {
     }
 
     //converted dto to entity
-    private Post mapToPost(PostDto postdto){
-        Post post = new Post();
-        post.setTitle(postdto.getTitle());
-        post.setDescription(postdto.getDescription());
-        post.setContent(postdto.getContent());
+    private Post mapToEntity(PostDto postdto){
+        Post post = mapper.map(postdto,Post.class);
         return post;
     }
 
     //converted entity to dto
     private PostDto mapToDTO(Post post){
-        PostDto postdto = new PostDto();
-        postdto.setId(post.getId());
-        postdto.setContent(post.getContent());
-        postdto.setDescription(post.getDescription());
-        postdto.setTitle(post.getTitle());
+        PostDto postdto = mapper.map(post, PostDto.class);
         return postdto;
     }
 }
