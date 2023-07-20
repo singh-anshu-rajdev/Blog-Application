@@ -1,5 +1,6 @@
 package com.springboot.blog.service.impl;
 
+import com.springboot.blog.config.JwtTokenProvider;
 import com.springboot.blog.entity.Role;
 import com.springboot.blog.entity.User;
 import com.springboot.blog.exception.BlogAPIException;
@@ -8,7 +9,6 @@ import com.springboot.blog.payload.RegisterDto;
 import com.springboot.blog.repository.RoleRepository;
 import com.springboot.blog.repository.UserRepository;
 import com.springboot.blog.service.AuthServices;
-import com.springboot.blog.service.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,31 +16,32 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Service
 public class AuthServiceImpl implements AuthServices {
 
-    private AuthenticationManager authenticatemanager;
-    private UserRepository userRepository;
-    private RoleRepository roleRepository;
-    private PasswordEncoder passwordEncoder;
+    private final AuthenticationManager authenticatemanager;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final PasswordEncoder passwordEncoder;
+    private JwtTokenProvider jwtTokenProvider;
 
-    public AuthServiceImpl(AuthenticationManager authenticatemanager, UserRepository userRepository,RoleRepository roleRepository,PasswordEncoder passwordEncoder) {
+    public AuthServiceImpl(AuthenticationManager authenticatemanager, UserRepository userRepository,RoleRepository roleRepository,PasswordEncoder passwordEncoder,JwtTokenProvider jwtTokenProvider) {
         this.authenticatemanager = authenticatemanager;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
+        this.jwtTokenProvider = jwtTokenProvider;
     }
 
     @Override
     public String Login(LoginDto logindto) {
         Authentication authentication = authenticatemanager.authenticate(new UsernamePasswordAuthenticationToken(logindto.getUsernameOrEmail(),logindto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return "user logged-in Successfully !";
+        String token = jwtTokenProvider.generateToken(authentication);
+        return token;
     }
 
     @Override
