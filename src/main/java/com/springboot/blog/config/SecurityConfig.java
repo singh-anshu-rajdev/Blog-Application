@@ -43,8 +43,11 @@ public class SecurityConfig{
     @Bean
     public SecurityFilterChain securityfilterchain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(authorize -> authorize.requestMatchers(HttpMethod.GET,"/api/**")
-                        .permitAll().requestMatchers("/api/auth/**").permitAll().anyRequest().authenticated())
+                .authorizeHttpRequests(authorize -> authorize.
+                        requestMatchers(HttpMethod.GET,"/api/**").permitAll().
+                        requestMatchers("/api/auth/**").permitAll()
+//                        .requestMatchers(HttpMethod.GET,"/api/categories/**").permitAll()
+                        .anyRequest().authenticated())
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(authenticationEntryPoint))
                 .sessionManagement(session ->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
