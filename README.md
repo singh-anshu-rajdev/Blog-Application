@@ -68,8 +68,13 @@
     #### 3. The password is an encypted password and hence if you want to change and hence use encrypted password to change it.
     #### 4. Database Samples
     <img width="559" alt="Post" src="https://github.com/anshu0007singh/Blog/assets/67259788/36b4994c-f651-4be2-91db-e78d1ca6c85f">
-    <img width="622" alt="Comments" src="https://github.com/anshu0007singh/Blog/assets/67259788/f3078894-d9c5-4c89-8ab6-c440488cc7e4">
-    <img width="565" alt="User" src="https://github.com/anshu0007singh/Blog/assets/67259788/52d1f034-72bb-4f9d-a1d3-f913433abcbd">
-    <img width="563" alt="Role" src="https://github.com/anshu0007singh/Blog/assets/67259788/5608ab72-6bb8-491f-9b8e-dd86529394fa">
-    <img width="563" alt="User-Role" src="https://github.com/anshu0007singh/Blog/assets/67259788/b78a9266-8cce-4c2e-ad9a-5c082a17e289">
+    <img width="562" alt="Comments1" src="https://github.com/anshu0007singh/Blog/assets/67259788/5716cb1f-7ca9-4a14-a7ed-d1c3dea04391">
+    <img width="565" alt="User" src="https://github.com/anshu0007singh/Blog/assets/67259788/0037116e-3e9b-400f-950e-88304695ca30">
+    <img width="563" alt="Role" src="https://github.com/anshu0007singh/Blog/assets/67259788/39815d67-67c2-4e33-843b-32b8c80b3c7c">
+    <img width="563" alt="User-Role" src="https://github.com/anshu0007singh/Blog/assets/67259788/6498d198-b71e-4acd-af0d-75f8bfdff0e9">
+
+
+
+
+
 
