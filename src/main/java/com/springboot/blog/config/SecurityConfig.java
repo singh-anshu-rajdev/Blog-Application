@@ -1,5 +1,7 @@
 package com.springboot.blog.config;
 
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -17,6 +19,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableMethodSecurity
+@SecurityScheme(
+        name = "Bear Authentication",
+        type = SecuritySchemeType.HTTP,
+        bearerFormat = "JWT",
+        scheme = "bearer"
+)
 public class SecurityConfig{
 
     public UserDetailsService userDetailsService;
@@ -45,8 +53,10 @@ public class SecurityConfig{
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize.
                         requestMatchers(HttpMethod.GET,"/api/**").permitAll().
-                        requestMatchers("/api/auth/**").permitAll()
-                        .anyRequest().authenticated())
+                        requestMatchers("/api/auth/**").permitAll().
+                        requestMatchers("/swagger-ui/**").permitAll().
+                        requestMatchers("/v3/api-docs/**").permitAll().
+                        anyRequest().authenticated())
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(authenticationEntryPoint))
                 .sessionManagement(session ->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
