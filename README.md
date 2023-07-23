@@ -34,7 +34,7 @@
    
     `Tools and Technologies`
 
-       - Intellij
+       - IntelliJ
        - Postman
 
     `Features`
@@ -46,10 +46,10 @@
    
     `Requirement`
 
-     1. IntelliJ: Make Sure you have latest version of Intellij installed on your machine. [TnelliJ IDEA](https://www.jetbrains.com/idea/)
+     1. IntelliJ: Make Sure you have latest version of Intellij installed on your machine. [IntelliJ IDEA](https://www.jetbrains.com/idea/)
      2. Postman: Make sure you have a latest version of postman installed on your machine. [Postman](https://www.postman.com/downloads/)
      3. MySQL: You will need a database connection to store and retrieve the data.And hence make sure you have MySQL workbench installed on your machine. [MySql](https://dev.mysql.com/downloads/workbench/)
-        #### Make sure you use versions compatible with your machine.
+        #### Make sure you use all the versions compatible with your machine.
 
     `Connections`
     
@@ -58,7 +58,7 @@
          spring.datasource.username = YOUR_DATABASE_USERNAME
          spring.datasource.password = YOUR_DATABASE_PASSWORD
 
-    #### Make sure the connection established Succesfully. you can check the output on postman
+    #### Make sure the connection established Succesfully. you can check the output on postman.
     #### If the project run Sucessfully You can check all the Endpoints and Schema of project on [Swagger](http://localhost:8080/swagger-ui/index.html#/)
 
     `Necessary Instructions`
