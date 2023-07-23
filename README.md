@@ -66,5 +66,10 @@
     #### 1. Make sure your connection is running on port 8080 and if not make the necessary changes as per your port no.
     #### 2. Admin data you have to insert manually inside your database as every individual is registered a admin. Username:admin || emailId:admin@gmail.com || password:$2a$10$NCiGYtuZCAJFrfCPLQBdce6vV97nNFPHDGPt0wnPwp7SrvrswkpbW
     #### 3. The password is an encypted password and hence if you want to change and hence use encrypted password to change it.
-        
-     
+    #### 4. Database Samples
+    <img width="559" alt="Post" src="https://github.com/anshu0007singh/Blog/assets/67259788/36b4994c-f651-4be2-91db-e78d1ca6c85f">
+    <img width="622" alt="Comments" src="https://github.com/anshu0007singh/Blog/assets/67259788/f3078894-d9c5-4c89-8ab6-c440488cc7e4">
+    <img width="565" alt="User" src="https://github.com/anshu0007singh/Blog/assets/67259788/52d1f034-72bb-4f9d-a1d3-f913433abcbd">
+    <img width="563" alt="Role" src="https://github.com/anshu0007singh/Blog/assets/67259788/5608ab72-6bb8-491f-9b8e-dd86529394fa">
+    <img width="563" alt="User-Role" src="https://github.com/anshu0007singh/Blog/assets/67259788/b78a9266-8cce-4c2e-ad9a-5c082a17e289">
+
