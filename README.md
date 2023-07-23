@@ -55,7 +55,7 @@
     
     #### Go to application.properties file inside the resources folder and make the necessary changes for establishing connection with your database
          spring.datasource.url = jdbc:mysql://localhost:3306/YOUR_DATABASE_NAME
-         spring.datasource.username = YOUR_DATBASE_USERNAME
+         spring.datasource.username = YOUR_DATABASE_USERNAME
          spring.datasource.password = YOUR_DATABASE_PASSWORD
 
     #### Make sure the connection established Succesfully. you can check the output on postman
