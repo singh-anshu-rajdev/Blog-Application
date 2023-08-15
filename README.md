@@ -67,7 +67,7 @@
 `# Necessary Instructions`
     
     1. Make sure your connection is running on port 8080 and if not make the necessary changes as per your port no.
-    2. Admin data you have to insert manually inside your database as every individual is registered a admin. Username:admin || emailId:admin@gmail.com || password:$2a$10$NCiGYtuZCAJFrfCPLQBdce6vV97nNFPHDGPt0wnPwp7SrvrswkpbW
+    2. Admin data you have to insert manually inside your database as every individual is registered as admin. Username:admin || emailId:admin@gmail.com || password:$2a$10$NCiGYtuZCAJFrfCPLQBdce6vV97nNFPHDGPt0wnPwp7SrvrswkpbW
     3. The password is an encypted password and hence if you want to change and hence use encrypted password to change it.
  
 `# Database Samples`
